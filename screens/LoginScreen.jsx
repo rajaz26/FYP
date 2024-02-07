@@ -15,8 +15,6 @@ import {
 } from '@aws-amplify/ui-react-native';
 import { signOut } from 'aws-amplify/auth';
 
-console.log('Auth',signIn);
-console.log('Ioninc',Ionic);
 const LoginScreen = () => {
   const navigation=useNavigation();
   const { control, handleSubmit, formState: { errors } } = useForm();
@@ -43,11 +41,10 @@ const handleSignOut = async () => {
     console.log('username:', username);
     try {
       console.log('Data:', data);
-      const username='RajaZain'
-      console.log('username:', username);
+      const username=data.username
+      const password=data.password
       const user = await signIn({
-        'username': 'jdoe',
-        'password': 'mysecurepassword#123',
+          username,password
       });
       console.log('Login success', user);
       console.log(data);
@@ -55,7 +52,7 @@ const handleSignOut = async () => {
       // Replace 'Home' with the name of the screen you want to navigate to
       // You can also use navigation.navigate('Home', { user }); to pass user data
       // to the next screen if needed
-      navigation.navigate('SignUp');
+      navigation.navigate('Home');
     } catch (error) {
       console.error('Login error has occurred', error);
       // Handle login errors as needed
