@@ -1,0 +1,56 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-uiwmaster-dev-190545-authRole",
+      "UnauthRoleArn": "arn:aws:iam::233679213002:role/amplify-uiwmaster-dev-190545-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::233679213002:role/amplify-uiwmaster-dev-190545-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-uiwmaster-dev-190545-deployment",
+      "UnauthRoleName": "amplify-uiwmaster-dev-190545-unauthRole",
+      "StackName": "amplify-uiwmaster-dev-190545",
+      "StackId": "arn:aws:cloudformation:us-east-1:233679213002:stack/amplify-uiwmaster-dev-190545/ff27c320-c5c1-11ee-b81d-127c814a8817",
+      "AmplifyAppId": "d36bto7hmmph46"
+    }
+  },
+  "auth": {
+    "uiwmaster1800794d": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-uiwmaster-dev-190545-deployment/amplify-cfn-templates/auth/uiwmaster1800794d-cloudformation-template.json",
+        "logicalId": "authuiwmaster1800794d"
+      },
+      "lastPushTimeStamp": "2024-02-07T20:58:15.429Z",
+      "output": {
+        "UserPoolId": "us-east-1_J6QMnuVpV",
+        "AppClientIDWeb": "111n9p7hf1cpqbvorrg84hp0kp",
+        "AppClientID": "7i79vd8fpp5j38jml43rjphnsj",
+        "IdentityPoolId": "us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:233679213002:userpool/us-east-1_J6QMnuVpV",
+        "IdentityPoolName": "uiwmaster1800794d_identitypool_1800794d__dev",
+        "UserPoolName": "uiwmaster1800794d_userpool_1800794d"
+      },
+      "lastPushDirHash": "UUw+az57Q1Mv+icmLtGft0CWQZo="
+    }
+  }
+}
