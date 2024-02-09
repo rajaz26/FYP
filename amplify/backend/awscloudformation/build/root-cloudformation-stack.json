@@ -1,5 +1,5 @@
 {
-  "Description": "Root Stack for AWS Amplify CLI",
+  "Description": "Root Stack for AWS Amplify Console",
   "AWSTemplateFormatVersion": "2010-09-09",
   "Parameters": {
     "DeploymentBucketName": {
@@ -201,6 +201,20 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
+          "env": "dev"
+        }
+      }
+    },
+    "apiuiwmaster": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-uiwmaster-dev-190545-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "Parameters": {
+          "AppSyncApiName": "uiwmaster",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "S3DeploymentBucket": "amplify-uiwmaster-dev-190545-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/82d42a79224cda6cf95023717bae598e4f6483a2",
           "env": "dev"
         }
       }

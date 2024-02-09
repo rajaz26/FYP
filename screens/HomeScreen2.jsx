@@ -6,23 +6,66 @@ import Ionic from 'react-native-vector-icons/Ionicons';
 import {productsObj} from '../assets/Products';
 import { useNavigation } from '@react-navigation/native'; 
 import { useSelector } from 'react-redux'; 
+import { createProduct } from '../src/graphql/mutations';
+// import { API, graphqlOperation } from 'aws-amplify/api';
+import { generateClient } from 'aws-amplify/api';
+
 const HomeScreen2 = () => {
-  const userRole = useSelector((state) => state.user.role);
+  const client = generateClient();
+  // const userRole = useSelector((state) => state.user.role);
+  const userRole = 'General Manager';
   const navigation = useNavigation();
   const openDrawer = () => {
     navigation.openDrawer();
+    console.log(userRole)
   };
-
+  const createNewProduct = async () => {
+    console.log('we have entered')
+    try {
+      // Product input data
+      const productInput = {
+        name: 'Nido',
+        description: 'Product Description',
+        barcode: '1234567890',
+        images: ['image1.jpg', 'image2.jpg'],
+        price: 19.99,
+      };
+ 
+      // Create the product using the mutation
+      const newProduct = await client.graphql({query:createProduct, variables:{ input: {
+        name: 'Nido',
+        description: 'Product Description',
+        barcode: '1234567890',
+        images: ['image1.jpg', 'image2.jpg'],
+        price: 19.99,
+      } ,authMode: 'apiKey'}});
+      console.log('New product created:', newProduct.data.createProduct);
+    } catch (error) {
+      console.error('Error creating product:', error);
+    }
+  };
+  
+  // Usage example
+  const productInput = {
+    name: 'Nido',
+    description: 'Product Description',
+    barcode: '1234567890',
+    images: ['image1.jpg', 'image2.jpg'], // Array of image URLs
+    price: 19.99,
+  };
+  
+  createNewProduct(productInput);
   return (
     <View style={{flex:1,backgroundColor:COLORS.primary}}>
         <View style={styles.wrapper}>
+          
         {userRole === 'General Manager' && (
            <SafeAreaView style={styles.safeArea}>
              
                   <View style={styles.sliderWrapper}>
                       <SalesLineChart/>
                   </View>
-                  <TouchableOpacity style={styles.drawerIcon} onPress={openDrawer}>
+                  <TouchableOpacity style={styles.drawerIcon} onPress={createNewProduct}>
                      <Ionic name="menu-outline" size={26} color='white' style={styles.drawerIcon} />
                   </TouchableOpacity>  
             </SafeAreaView>)}
@@ -56,6 +99,7 @@ const HomeScreen2 = () => {
                   </TouchableOpacity>
                   {userRole !== 'Purchaser' ? (
                   <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.navigate('Settings')}>
+                  {/* //<TouchableOpacity style={styles.iconContainer} onPress={createNewProduct}> */}
                     <Ionic name="settings" size={25} color={COLORS.primary} style={styles.homeIcon} />
                     <Text style={styles.iconText}>Settings</Text>
                   </TouchableOpacity>

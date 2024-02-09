@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "uiwmaster",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2025-02-08T09:48:02.070Z",
+      "keyDescription": ""
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
+    "additionalAuthTypes": []
+  }
+}

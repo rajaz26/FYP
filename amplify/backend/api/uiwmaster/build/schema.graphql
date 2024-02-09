@@ -1,0 +1,575 @@
+type Product {
+  id: ID!
+  name: String!
+  description: String
+  barcode: String!
+  images: [String]
+  price: Float!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  phonenumber: String!
+  image: String
+  role: UserRole!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+enum UserRole {
+  GENERAL_MANAGER
+  CASHIER
+  WAREHOUSE_MANAGER
+  PURCHASER
+}
+
+type Bill {
+  id: ID!
+  cashier: User!
+  items: [Product!]!
+  totalAmount: Float!
+  status: BillStatus!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+enum BillStatus {
+  PENDING
+  CONFIRMED
+  PAID
+}
+
+type Inventory {
+  id: ID!
+  product: Product!
+  warehouseQuantity: Int!
+  shelfQuantity: Int!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type PurchaseOrder {
+  id: ID!
+  purchaser: User!
+  products: [Product!]!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelProductConnection {
+  items: [Product]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelProductFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  description: ModelStringInput
+  barcode: ModelStringInput
+  images: ModelStringInput
+  price: ModelFloatInput
+  and: [ModelProductFilterInput]
+  or: [ModelProductFilterInput]
+  not: ModelProductFilterInput
+  _deleted: ModelBooleanInput
+}
+
+type Query {
+  getProduct(id: ID!): Product
+  listProducts(filter: ModelProductFilterInput, limit: Int, nextToken: String): ModelProductConnection
+  syncProducts(filter: ModelProductFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelProductConnection
+  getUser(id: ID!): User
+  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection
+  syncUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUserConnection
+  getBill(id: ID!): Bill
+  listBills(filter: ModelBillFilterInput, limit: Int, nextToken: String): ModelBillConnection
+  syncBills(filter: ModelBillFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelBillConnection
+  getInventory(id: ID!): Inventory
+  listInventories(filter: ModelInventoryFilterInput, limit: Int, nextToken: String): ModelInventoryConnection
+  syncInventories(filter: ModelInventoryFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelInventoryConnection
+  getPurchaseOrder(id: ID!): PurchaseOrder
+  listPurchaseOrders(filter: ModelPurchaseOrderFilterInput, limit: Int, nextToken: String): ModelPurchaseOrderConnection
+  syncPurchaseOrders(filter: ModelPurchaseOrderFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelPurchaseOrderConnection
+}
+
+input ModelProductConditionInput {
+  name: ModelStringInput
+  description: ModelStringInput
+  barcode: ModelStringInput
+  images: ModelStringInput
+  price: ModelFloatInput
+  and: [ModelProductConditionInput]
+  or: [ModelProductConditionInput]
+  not: ModelProductConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateProductInput {
+  id: ID
+  name: String!
+  description: String
+  barcode: String!
+  images: [String]
+  price: Float!
+  _version: Int
+}
+
+input UpdateProductInput {
+  id: ID!
+  name: String
+  description: String
+  barcode: String
+  images: [String]
+  price: Float
+  _version: Int
+}
+
+input DeleteProductInput {
+  id: ID!
+  _version: Int
+}
+
+type Mutation {
+  createProduct(input: CreateProductInput!, condition: ModelProductConditionInput): Product
+  updateProduct(input: UpdateProductInput!, condition: ModelProductConditionInput): Product
+  deleteProduct(input: DeleteProductInput!, condition: ModelProductConditionInput): Product
+  createUser(input: CreateUserInput!, condition: ModelUserConditionInput): User
+  updateUser(input: UpdateUserInput!, condition: ModelUserConditionInput): User
+  deleteUser(input: DeleteUserInput!, condition: ModelUserConditionInput): User
+  createBill(input: CreateBillInput!, condition: ModelBillConditionInput): Bill
+  updateBill(input: UpdateBillInput!, condition: ModelBillConditionInput): Bill
+  deleteBill(input: DeleteBillInput!, condition: ModelBillConditionInput): Bill
+  createInventory(input: CreateInventoryInput!, condition: ModelInventoryConditionInput): Inventory
+  updateInventory(input: UpdateInventoryInput!, condition: ModelInventoryConditionInput): Inventory
+  deleteInventory(input: DeleteInventoryInput!, condition: ModelInventoryConditionInput): Inventory
+  createPurchaseOrder(input: CreatePurchaseOrderInput!, condition: ModelPurchaseOrderConditionInput): PurchaseOrder
+  updatePurchaseOrder(input: UpdatePurchaseOrderInput!, condition: ModelPurchaseOrderConditionInput): PurchaseOrder
+  deletePurchaseOrder(input: DeletePurchaseOrderInput!, condition: ModelPurchaseOrderConditionInput): PurchaseOrder
+}
+
+input ModelSubscriptionProductFilterInput {
+  id: ModelSubscriptionIDInput
+  name: ModelSubscriptionStringInput
+  description: ModelSubscriptionStringInput
+  barcode: ModelSubscriptionStringInput
+  images: ModelSubscriptionStringInput
+  price: ModelSubscriptionFloatInput
+  and: [ModelSubscriptionProductFilterInput]
+  or: [ModelSubscriptionProductFilterInput]
+  _deleted: ModelBooleanInput
+}
+
+type Subscription {
+  onCreateProduct(filter: ModelSubscriptionProductFilterInput): Product @aws_subscribe(mutations: ["createProduct"])
+  onUpdateProduct(filter: ModelSubscriptionProductFilterInput): Product @aws_subscribe(mutations: ["updateProduct"])
+  onDeleteProduct(filter: ModelSubscriptionProductFilterInput): Product @aws_subscribe(mutations: ["deleteProduct"])
+  onCreateUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["createUser"])
+  onUpdateUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["updateUser"])
+  onDeleteUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["deleteUser"])
+  onCreateBill(filter: ModelSubscriptionBillFilterInput): Bill @aws_subscribe(mutations: ["createBill"])
+  onUpdateBill(filter: ModelSubscriptionBillFilterInput): Bill @aws_subscribe(mutations: ["updateBill"])
+  onDeleteBill(filter: ModelSubscriptionBillFilterInput): Bill @aws_subscribe(mutations: ["deleteBill"])
+  onCreateInventory(filter: ModelSubscriptionInventoryFilterInput): Inventory @aws_subscribe(mutations: ["createInventory"])
+  onUpdateInventory(filter: ModelSubscriptionInventoryFilterInput): Inventory @aws_subscribe(mutations: ["updateInventory"])
+  onDeleteInventory(filter: ModelSubscriptionInventoryFilterInput): Inventory @aws_subscribe(mutations: ["deleteInventory"])
+  onCreatePurchaseOrder(filter: ModelSubscriptionPurchaseOrderFilterInput): PurchaseOrder @aws_subscribe(mutations: ["createPurchaseOrder"])
+  onUpdatePurchaseOrder(filter: ModelSubscriptionPurchaseOrderFilterInput): PurchaseOrder @aws_subscribe(mutations: ["updatePurchaseOrder"])
+  onDeletePurchaseOrder(filter: ModelSubscriptionPurchaseOrderFilterInput): PurchaseOrder @aws_subscribe(mutations: ["deletePurchaseOrder"])
+}
+
+type ModelUserConnection {
+  items: [User]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelUserRoleInput {
+  eq: UserRole
+  ne: UserRole
+}
+
+input ModelUserFilterInput {
+  id: ModelIDInput
+  username: ModelStringInput
+  email: ModelStringInput
+  phonenumber: ModelStringInput
+  image: ModelStringInput
+  role: ModelUserRoleInput
+  and: [ModelUserFilterInput]
+  or: [ModelUserFilterInput]
+  not: ModelUserFilterInput
+  _deleted: ModelBooleanInput
+}
+
+input ModelUserConditionInput {
+  username: ModelStringInput
+  email: ModelStringInput
+  phonenumber: ModelStringInput
+  image: ModelStringInput
+  role: ModelUserRoleInput
+  and: [ModelUserConditionInput]
+  or: [ModelUserConditionInput]
+  not: ModelUserConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateUserInput {
+  id: ID
+  username: String!
+  email: String!
+  phonenumber: String!
+  image: String
+  role: UserRole!
+  _version: Int
+}
+
+input UpdateUserInput {
+  id: ID!
+  username: String
+  email: String
+  phonenumber: String
+  image: String
+  role: UserRole
+  _version: Int
+}
+
+input DeleteUserInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionUserFilterInput {
+  id: ModelSubscriptionIDInput
+  username: ModelSubscriptionStringInput
+  email: ModelSubscriptionStringInput
+  phonenumber: ModelSubscriptionStringInput
+  image: ModelSubscriptionStringInput
+  role: ModelSubscriptionStringInput
+  and: [ModelSubscriptionUserFilterInput]
+  or: [ModelSubscriptionUserFilterInput]
+  _deleted: ModelBooleanInput
+}
+
+type ModelBillConnection {
+  items: [Bill]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelBillStatusInput {
+  eq: BillStatus
+  ne: BillStatus
+}
+
+input ModelBillFilterInput {
+  id: ModelIDInput
+  totalAmount: ModelFloatInput
+  status: ModelBillStatusInput
+  and: [ModelBillFilterInput]
+  or: [ModelBillFilterInput]
+  not: ModelBillFilterInput
+  _deleted: ModelBooleanInput
+}
+
+input ModelBillConditionInput {
+  totalAmount: ModelFloatInput
+  status: ModelBillStatusInput
+  and: [ModelBillConditionInput]
+  or: [ModelBillConditionInput]
+  not: ModelBillConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateBillInput {
+  id: ID
+  totalAmount: Float!
+  status: BillStatus!
+  _version: Int
+}
+
+input UpdateBillInput {
+  id: ID!
+  totalAmount: Float
+  status: BillStatus
+  _version: Int
+}
+
+input DeleteBillInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionBillFilterInput {
+  id: ModelSubscriptionIDInput
+  totalAmount: ModelSubscriptionFloatInput
+  status: ModelSubscriptionStringInput
+  and: [ModelSubscriptionBillFilterInput]
+  or: [ModelSubscriptionBillFilterInput]
+  _deleted: ModelBooleanInput
+}
+
+type ModelInventoryConnection {
+  items: [Inventory]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelInventoryFilterInput {
+  id: ModelIDInput
+  warehouseQuantity: ModelIntInput
+  shelfQuantity: ModelIntInput
+  and: [ModelInventoryFilterInput]
+  or: [ModelInventoryFilterInput]
+  not: ModelInventoryFilterInput
+  _deleted: ModelBooleanInput
+}
+
+input ModelInventoryConditionInput {
+  warehouseQuantity: ModelIntInput
+  shelfQuantity: ModelIntInput
+  and: [ModelInventoryConditionInput]
+  or: [ModelInventoryConditionInput]
+  not: ModelInventoryConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreateInventoryInput {
+  id: ID
+  warehouseQuantity: Int!
+  shelfQuantity: Int!
+  _version: Int
+}
+
+input UpdateInventoryInput {
+  id: ID!
+  warehouseQuantity: Int
+  shelfQuantity: Int
+  _version: Int
+}
+
+input DeleteInventoryInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionInventoryFilterInput {
+  id: ModelSubscriptionIDInput
+  warehouseQuantity: ModelSubscriptionIntInput
+  shelfQuantity: ModelSubscriptionIntInput
+  and: [ModelSubscriptionInventoryFilterInput]
+  or: [ModelSubscriptionInventoryFilterInput]
+  _deleted: ModelBooleanInput
+}
+
+type ModelPurchaseOrderConnection {
+  items: [PurchaseOrder]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelPurchaseOrderFilterInput {
+  id: ModelIDInput
+  and: [ModelPurchaseOrderFilterInput]
+  or: [ModelPurchaseOrderFilterInput]
+  not: ModelPurchaseOrderFilterInput
+  _deleted: ModelBooleanInput
+}
+
+input ModelPurchaseOrderConditionInput {
+  and: [ModelPurchaseOrderConditionInput]
+  or: [ModelPurchaseOrderConditionInput]
+  not: ModelPurchaseOrderConditionInput
+  _deleted: ModelBooleanInput
+}
+
+input CreatePurchaseOrderInput {
+  id: ID
+  _version: Int
+}
+
+input UpdatePurchaseOrderInput {
+  id: ID!
+  _version: Int
+}
+
+input DeletePurchaseOrderInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionPurchaseOrderFilterInput {
+  id: ModelSubscriptionIDInput
+  and: [ModelSubscriptionPurchaseOrderFilterInput]
+  or: [ModelSubscriptionPurchaseOrderFilterInput]
+  _deleted: ModelBooleanInput
+}
