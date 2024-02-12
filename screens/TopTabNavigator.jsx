@@ -72,7 +72,9 @@ const TopTabNavigator = () => {
       tabBarPosition="bottom"
       screenOptions={{
         tabBarShowLabel: false,
+        headerShown: false,
       }}
+      
       
     >
       <Tab.Screen name="Dashboard" component={HomeScreen2} />

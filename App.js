@@ -11,11 +11,14 @@ import { View } from 'react-native';
 
 export default function App() {
   return (
-    <Provider store={store}>
-    <NavigationContainer>
-      <Appnavigation />
-    </NavigationContainer>
-    </Provider>
+    //  <Provider store={store}>
+    <Provider store={store}> 
+        <Appnavigation />
+        </Provider>
+    /* // <NavigationContainer> */
+    
+    /* // </NavigationContainer> */
+  // </Provider>
     // <View>
     //   <Authenticator>
     //     <Text>HOME</Text>

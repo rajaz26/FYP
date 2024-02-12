@@ -40,7 +40,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-uiwmaster-dev-190545-deployment/amplify-cfn-templates/auth/uiwmaster1800794d-cloudformation-template.json",
         "logicalId": "authuiwmaster1800794d"
       },
-      "lastPushTimeStamp": "2024-02-09T11:15:07.717Z",
+      "lastPushTimeStamp": "2024-02-11T00:47:17.347Z",
       "output": {
         "UserPoolId": "us-east-1_J6QMnuVpV",
         "AppClientIDWeb": "111n9p7hf1cpqbvorrg84hp0kp",
@@ -78,8 +78,16 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-uiwmaster-dev-190545-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiuiwmaster"
       },
-      "lastPushTimeStamp": "2024-02-09T11:15:07.722Z",
+      "lastPushTimeStamp": "2024-02-11T00:47:17.380Z",
       "lastPushDirHash": "ykdL/Fjwmzyt23r5bciDq8w+5Gc="
+    }
+  },
+  "storage": {
+    "retailappimages": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "lastPushTimeStamp": "2024-02-11T00:47:21.618Z"
     }
   }
 }

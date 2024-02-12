@@ -1,10 +1,12 @@
-type Product {
+type Product @aws_iam @aws_api_key {
   id: ID!
   name: String!
   description: String
   barcode: String!
   images: [String]
   price: Float!
+  manufacturer: String
+  category: String
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
   _version: Int!
@@ -12,7 +14,7 @@ type Product {
   _lastChangedAt: AWSTimestamp!
 }
 
-type User {
+type User @aws_iam @aws_api_key {
   id: ID!
   username: String!
   email: String!
@@ -33,7 +35,7 @@ enum UserRole {
   PURCHASER
 }
 
-type Bill {
+type Bill @aws_iam @aws_api_key {
   id: ID!
   cashier: User!
   items: [Product!]!
@@ -52,7 +54,7 @@ enum BillStatus {
   PAID
 }
 
-type Inventory {
+type Inventory @aws_iam @aws_api_key {
   id: ID!
   product: Product!
   warehouseQuantity: Int!
@@ -64,7 +66,7 @@ type Inventory {
   _lastChangedAt: AWSTimestamp!
 }
 
-type PurchaseOrder {
+type PurchaseOrder @aws_iam @aws_api_key {
   id: ID!
   purchaser: User!
   products: [Product!]!
@@ -225,7 +227,7 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelProductConnection {
+type ModelProductConnection @aws_api_key @aws_iam {
   items: [Product]!
   nextToken: String
   startedAt: AWSTimestamp
@@ -238,6 +240,8 @@ input ModelProductFilterInput {
   barcode: ModelStringInput
   images: ModelStringInput
   price: ModelFloatInput
+  manufacturer: ModelStringInput
+  category: ModelStringInput
   and: [ModelProductFilterInput]
   or: [ModelProductFilterInput]
   not: ModelProductFilterInput
@@ -245,21 +249,21 @@ input ModelProductFilterInput {
 }
 
 type Query {
-  getProduct(id: ID!): Product
-  listProducts(filter: ModelProductFilterInput, limit: Int, nextToken: String): ModelProductConnection
-  syncProducts(filter: ModelProductFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelProductConnection
-  getUser(id: ID!): User
-  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection
-  syncUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUserConnection
-  getBill(id: ID!): Bill
-  listBills(filter: ModelBillFilterInput, limit: Int, nextToken: String): ModelBillConnection
-  syncBills(filter: ModelBillFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelBillConnection
-  getInventory(id: ID!): Inventory
-  listInventories(filter: ModelInventoryFilterInput, limit: Int, nextToken: String): ModelInventoryConnection
-  syncInventories(filter: ModelInventoryFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelInventoryConnection
-  getPurchaseOrder(id: ID!): PurchaseOrder
-  listPurchaseOrders(filter: ModelPurchaseOrderFilterInput, limit: Int, nextToken: String): ModelPurchaseOrderConnection
-  syncPurchaseOrders(filter: ModelPurchaseOrderFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelPurchaseOrderConnection
+  getProduct(id: ID!): Product @aws_api_key @aws_iam
+  listProducts(filter: ModelProductFilterInput, limit: Int, nextToken: String): ModelProductConnection @aws_api_key @aws_iam
+  syncProducts(filter: ModelProductFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelProductConnection @aws_api_key @aws_iam
+  getUser(id: ID!): User @aws_api_key @aws_iam
+  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection @aws_api_key @aws_iam
+  syncUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUserConnection @aws_api_key @aws_iam
+  getBill(id: ID!): Bill @aws_api_key @aws_iam
+  listBills(filter: ModelBillFilterInput, limit: Int, nextToken: String): ModelBillConnection @aws_api_key @aws_iam
+  syncBills(filter: ModelBillFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelBillConnection @aws_api_key @aws_iam
+  getInventory(id: ID!): Inventory @aws_api_key @aws_iam
+  listInventories(filter: ModelInventoryFilterInput, limit: Int, nextToken: String): ModelInventoryConnection @aws_api_key @aws_iam
+  syncInventories(filter: ModelInventoryFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelInventoryConnection @aws_api_key @aws_iam
+  getPurchaseOrder(id: ID!): PurchaseOrder @aws_api_key @aws_iam
+  listPurchaseOrders(filter: ModelPurchaseOrderFilterInput, limit: Int, nextToken: String): ModelPurchaseOrderConnection @aws_api_key @aws_iam
+  syncPurchaseOrders(filter: ModelPurchaseOrderFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelPurchaseOrderConnection @aws_api_key @aws_iam
 }
 
 input ModelProductConditionInput {
@@ -268,6 +272,8 @@ input ModelProductConditionInput {
   barcode: ModelStringInput
   images: ModelStringInput
   price: ModelFloatInput
+  manufacturer: ModelStringInput
+  category: ModelStringInput
   and: [ModelProductConditionInput]
   or: [ModelProductConditionInput]
   not: ModelProductConditionInput
@@ -281,6 +287,8 @@ input CreateProductInput {
   barcode: String!
   images: [String]
   price: Float!
+  manufacturer: String
+  category: String
   _version: Int
 }
 
@@ -291,6 +299,8 @@ input UpdateProductInput {
   barcode: String
   images: [String]
   price: Float
+  manufacturer: String
+  category: String
   _version: Int
 }
 
@@ -300,21 +310,21 @@ input DeleteProductInput {
 }
 
 type Mutation {
-  createProduct(input: CreateProductInput!, condition: ModelProductConditionInput): Product
-  updateProduct(input: UpdateProductInput!, condition: ModelProductConditionInput): Product
-  deleteProduct(input: DeleteProductInput!, condition: ModelProductConditionInput): Product
-  createUser(input: CreateUserInput!, condition: ModelUserConditionInput): User
-  updateUser(input: UpdateUserInput!, condition: ModelUserConditionInput): User
-  deleteUser(input: DeleteUserInput!, condition: ModelUserConditionInput): User
-  createBill(input: CreateBillInput!, condition: ModelBillConditionInput): Bill
-  updateBill(input: UpdateBillInput!, condition: ModelBillConditionInput): Bill
-  deleteBill(input: DeleteBillInput!, condition: ModelBillConditionInput): Bill
-  createInventory(input: CreateInventoryInput!, condition: ModelInventoryConditionInput): Inventory
-  updateInventory(input: UpdateInventoryInput!, condition: ModelInventoryConditionInput): Inventory
-  deleteInventory(input: DeleteInventoryInput!, condition: ModelInventoryConditionInput): Inventory
-  createPurchaseOrder(input: CreatePurchaseOrderInput!, condition: ModelPurchaseOrderConditionInput): PurchaseOrder
-  updatePurchaseOrder(input: UpdatePurchaseOrderInput!, condition: ModelPurchaseOrderConditionInput): PurchaseOrder
-  deletePurchaseOrder(input: DeletePurchaseOrderInput!, condition: ModelPurchaseOrderConditionInput): PurchaseOrder
+  createProduct(input: CreateProductInput!, condition: ModelProductConditionInput): Product @aws_api_key @aws_iam
+  updateProduct(input: UpdateProductInput!, condition: ModelProductConditionInput): Product @aws_api_key @aws_iam
+  deleteProduct(input: DeleteProductInput!, condition: ModelProductConditionInput): Product @aws_api_key @aws_iam
+  createUser(input: CreateUserInput!, condition: ModelUserConditionInput): User @aws_api_key @aws_iam
+  updateUser(input: UpdateUserInput!, condition: ModelUserConditionInput): User @aws_api_key @aws_iam
+  deleteUser(input: DeleteUserInput!, condition: ModelUserConditionInput): User @aws_api_key @aws_iam
+  createBill(input: CreateBillInput!, condition: ModelBillConditionInput): Bill @aws_api_key @aws_iam
+  updateBill(input: UpdateBillInput!, condition: ModelBillConditionInput): Bill @aws_api_key @aws_iam
+  deleteBill(input: DeleteBillInput!, condition: ModelBillConditionInput): Bill @aws_api_key @aws_iam
+  createInventory(input: CreateInventoryInput!, condition: ModelInventoryConditionInput): Inventory @aws_api_key @aws_iam
+  updateInventory(input: UpdateInventoryInput!, condition: ModelInventoryConditionInput): Inventory @aws_api_key @aws_iam
+  deleteInventory(input: DeleteInventoryInput!, condition: ModelInventoryConditionInput): Inventory @aws_api_key @aws_iam
+  createPurchaseOrder(input: CreatePurchaseOrderInput!, condition: ModelPurchaseOrderConditionInput): PurchaseOrder @aws_api_key @aws_iam
+  updatePurchaseOrder(input: UpdatePurchaseOrderInput!, condition: ModelPurchaseOrderConditionInput): PurchaseOrder @aws_api_key @aws_iam
+  deletePurchaseOrder(input: DeletePurchaseOrderInput!, condition: ModelPurchaseOrderConditionInput): PurchaseOrder @aws_api_key @aws_iam
 }
 
 input ModelSubscriptionProductFilterInput {
@@ -324,30 +334,32 @@ input ModelSubscriptionProductFilterInput {
   barcode: ModelSubscriptionStringInput
   images: ModelSubscriptionStringInput
   price: ModelSubscriptionFloatInput
+  manufacturer: ModelSubscriptionStringInput
+  category: ModelSubscriptionStringInput
   and: [ModelSubscriptionProductFilterInput]
   or: [ModelSubscriptionProductFilterInput]
   _deleted: ModelBooleanInput
 }
 
 type Subscription {
-  onCreateProduct(filter: ModelSubscriptionProductFilterInput): Product @aws_subscribe(mutations: ["createProduct"])
-  onUpdateProduct(filter: ModelSubscriptionProductFilterInput): Product @aws_subscribe(mutations: ["updateProduct"])
-  onDeleteProduct(filter: ModelSubscriptionProductFilterInput): Product @aws_subscribe(mutations: ["deleteProduct"])
-  onCreateUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["createUser"])
-  onUpdateUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["updateUser"])
-  onDeleteUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["deleteUser"])
-  onCreateBill(filter: ModelSubscriptionBillFilterInput): Bill @aws_subscribe(mutations: ["createBill"])
-  onUpdateBill(filter: ModelSubscriptionBillFilterInput): Bill @aws_subscribe(mutations: ["updateBill"])
-  onDeleteBill(filter: ModelSubscriptionBillFilterInput): Bill @aws_subscribe(mutations: ["deleteBill"])
-  onCreateInventory(filter: ModelSubscriptionInventoryFilterInput): Inventory @aws_subscribe(mutations: ["createInventory"])
-  onUpdateInventory(filter: ModelSubscriptionInventoryFilterInput): Inventory @aws_subscribe(mutations: ["updateInventory"])
-  onDeleteInventory(filter: ModelSubscriptionInventoryFilterInput): Inventory @aws_subscribe(mutations: ["deleteInventory"])
-  onCreatePurchaseOrder(filter: ModelSubscriptionPurchaseOrderFilterInput): PurchaseOrder @aws_subscribe(mutations: ["createPurchaseOrder"])
-  onUpdatePurchaseOrder(filter: ModelSubscriptionPurchaseOrderFilterInput): PurchaseOrder @aws_subscribe(mutations: ["updatePurchaseOrder"])
-  onDeletePurchaseOrder(filter: ModelSubscriptionPurchaseOrderFilterInput): PurchaseOrder @aws_subscribe(mutations: ["deletePurchaseOrder"])
+  onCreateProduct(filter: ModelSubscriptionProductFilterInput): Product @aws_subscribe(mutations: ["createProduct"]) @aws_api_key @aws_iam
+  onUpdateProduct(filter: ModelSubscriptionProductFilterInput): Product @aws_subscribe(mutations: ["updateProduct"]) @aws_api_key @aws_iam
+  onDeleteProduct(filter: ModelSubscriptionProductFilterInput): Product @aws_subscribe(mutations: ["deleteProduct"]) @aws_api_key @aws_iam
+  onCreateUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["createUser"]) @aws_api_key @aws_iam
+  onUpdateUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["updateUser"]) @aws_api_key @aws_iam
+  onDeleteUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["deleteUser"]) @aws_api_key @aws_iam
+  onCreateBill(filter: ModelSubscriptionBillFilterInput): Bill @aws_subscribe(mutations: ["createBill"]) @aws_api_key @aws_iam
+  onUpdateBill(filter: ModelSubscriptionBillFilterInput): Bill @aws_subscribe(mutations: ["updateBill"]) @aws_api_key @aws_iam
+  onDeleteBill(filter: ModelSubscriptionBillFilterInput): Bill @aws_subscribe(mutations: ["deleteBill"]) @aws_api_key @aws_iam
+  onCreateInventory(filter: ModelSubscriptionInventoryFilterInput): Inventory @aws_subscribe(mutations: ["createInventory"]) @aws_api_key @aws_iam
+  onUpdateInventory(filter: ModelSubscriptionInventoryFilterInput): Inventory @aws_subscribe(mutations: ["updateInventory"]) @aws_api_key @aws_iam
+  onDeleteInventory(filter: ModelSubscriptionInventoryFilterInput): Inventory @aws_subscribe(mutations: ["deleteInventory"]) @aws_api_key @aws_iam
+  onCreatePurchaseOrder(filter: ModelSubscriptionPurchaseOrderFilterInput): PurchaseOrder @aws_subscribe(mutations: ["createPurchaseOrder"]) @aws_api_key @aws_iam
+  onUpdatePurchaseOrder(filter: ModelSubscriptionPurchaseOrderFilterInput): PurchaseOrder @aws_subscribe(mutations: ["updatePurchaseOrder"]) @aws_api_key @aws_iam
+  onDeletePurchaseOrder(filter: ModelSubscriptionPurchaseOrderFilterInput): PurchaseOrder @aws_subscribe(mutations: ["deletePurchaseOrder"]) @aws_api_key @aws_iam
 }
 
-type ModelUserConnection {
+type ModelUserConnection @aws_api_key @aws_iam {
   items: [User]!
   nextToken: String
   startedAt: AWSTimestamp
@@ -420,7 +432,7 @@ input ModelSubscriptionUserFilterInput {
   _deleted: ModelBooleanInput
 }
 
-type ModelBillConnection {
+type ModelBillConnection @aws_api_key @aws_iam {
   items: [Bill]!
   nextToken: String
   startedAt: AWSTimestamp
@@ -478,7 +490,7 @@ input ModelSubscriptionBillFilterInput {
   _deleted: ModelBooleanInput
 }
 
-type ModelInventoryConnection {
+type ModelInventoryConnection @aws_api_key @aws_iam {
   items: [Inventory]!
   nextToken: String
   startedAt: AWSTimestamp
@@ -531,7 +543,7 @@ input ModelSubscriptionInventoryFilterInput {
   _deleted: ModelBooleanInput
 }
 
-type ModelPurchaseOrderConnection {
+type ModelPurchaseOrderConnection @aws_api_key @aws_iam {
   items: [PurchaseOrder]!
   nextToken: String
   startedAt: AWSTimestamp

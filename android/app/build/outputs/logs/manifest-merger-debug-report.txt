@@ -22,6 +22,7 @@ MERGED from [:react-native-picker_picker] D:\new\UIW-master\node_modules\@react-
 MERGED from [:amazon-cognito-identity-js] D:\new\UIW-master\node_modules\amazon-cognito-identity-js\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-get-random-values] D:\new\UIW-master\node_modules\react-native-get-random-values\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-haptic-feedback] D:\new\UIW-master\node_modules\react-native-haptic-feedback\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:react-native-pager-view] D:\new\UIW-master\node_modules\react-native-pager-view\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-safe-area-context] D:\new\UIW-master\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-screens] D:\new\UIW-master\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -56,13 +57,13 @@ MERGED from [com.facebook.fresco:imagepipeline-base:2.6.0] C:\Users\PMLS\.gradle
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\9300c7fc5aff0974f1ee709fb212c45e\transformed\material-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\PMLS\.gradle\caches\transforms-3\b14585e0ae3314e7a64bac79062dab1c\transformed\appcompat-1.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.sqlite:sqlite-framework:2.2.0] C:\Users\PMLS\.gradle\caches\transforms-3\aed854fb12aa7a4f325a5318b63d5aa8\transformed\sqlite-framework-2.2.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\378d88de2fde0e29d92543d12e33b34a\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\cde464ada6bf8e4db1ce6a3edaecd38a\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\d2a0ef851359ae355103c8a357e2e22c\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.mlkit:barcode-scanning:17.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\c055c253c72aaef0e170dd3c0f71d2e5\transformed\jetified-barcode-scanning-17.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:16.2.1] C:\Users\PMLS\.gradle\caches\transforms-3\78def8edeb7ffab681924257545b624a\transformed\jetified-play-services-mlkit-barcode-scanning-16.2.1\AndroidManifest.xml:2:1-18:12
 MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\PMLS\.gradle\caches\transforms-3\b86801a92097a5dcc8fcd3577b45f061\transformed\jetified-vision-common-16.5.0\AndroidManifest.xml:2:1-18:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.3] C:\Users\PMLS\.gradle\caches\transforms-3\0eba2a16e2a1cb3e4265e0366e9b27e0\transformed\exifinterface-1.3.3\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\378d88de2fde0e29d92543d12e33b34a\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\cde464ada6bf8e4db1ce6a3edaecd38a\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\d2a0ef851359ae355103c8a357e2e22c\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.sqlite:sqlite:2.2.0] C:\Users\PMLS\.gradle\caches\transforms-3\dc58477293179deb391b12c4cba55b48\transformed\sqlite-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\PMLS\.gradle\caches\transforms-3\30de096d5ba1553f19f74e52c1ed5c94\transformed\jetified-appcompat-resources-1.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.mlkit:common:17.3.0] C:\Users\PMLS\.gradle\caches\transforms-3\36f1100b37c8f6902063af61b98753d6\transformed\jetified-common-17.3.0\AndroidManifest.xml:2:1-26:12
@@ -160,6 +161,8 @@ application
 ADDED from D:\new\UIW-master\android\app\src\main\AndroidManifest.xml:9:5-30:19
 MERGED from D:\new\UIW-master\android\app\src\main\AndroidManifest.xml:9:5-30:19
 MERGED from D:\new\UIW-master\android\app\src\main\AndroidManifest.xml:9:5-30:19
+MERGED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [androidx.camera:camera-extensions:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\fdc5f04f904a371fffa0d9fa9a25ae7d\transformed\jetified-camera-extensions-1.1.0\AndroidManifest.xml:30:5-34:19
 MERGED from [androidx.camera:camera-extensions:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\fdc5f04f904a371fffa0d9fa9a25ae7d\transformed\jetified-camera-extensions-1.1.0\AndroidManifest.xml:30:5-34:19
 MERGED from [androidx.camera:camera-camera2:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\d06cdb2cb33c09f1cf6789dc5eecfe58\transformed\jetified-camera-camera2-1.1.0\AndroidManifest.xml:25:5-36:19
@@ -291,6 +294,8 @@ MERGED from [:react-native-get-random-values] D:\new\UIW-master\node_modules\rea
 MERGED from [:react-native-get-random-values] D:\new\UIW-master\node_modules\react-native-get-random-values\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-haptic-feedback] D:\new\UIW-master\node_modules\react-native-haptic-feedback\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-haptic-feedback] D:\new\UIW-master\node_modules\react-native-haptic-feedback\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-pager-view] D:\new\UIW-master\node_modules\react-native-pager-view\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-pager-view] D:\new\UIW-master\node_modules\react-native-pager-view\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:react-native-safe-area-context] D:\new\UIW-master\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
@@ -359,12 +364,6 @@ MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\PMLS\.gradle\caches\tr
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\PMLS\.gradle\caches\transforms-3\b14585e0ae3314e7a64bac79062dab1c\transformed\appcompat-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.sqlite:sqlite-framework:2.2.0] C:\Users\PMLS\.gradle\caches\transforms-3\aed854fb12aa7a4f325a5318b63d5aa8\transformed\sqlite-framework-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.sqlite:sqlite-framework:2.2.0] C:\Users\PMLS\.gradle\caches\transforms-3\aed854fb12aa7a4f325a5318b63d5aa8\transformed\sqlite-framework-2.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\378d88de2fde0e29d92543d12e33b34a\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\378d88de2fde0e29d92543d12e33b34a\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\cde464ada6bf8e4db1ce6a3edaecd38a\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\cde464ada6bf8e4db1ce6a3edaecd38a\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\d2a0ef851359ae355103c8a357e2e22c\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\d2a0ef851359ae355103c8a357e2e22c\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.mlkit:barcode-scanning:17.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\c055c253c72aaef0e170dd3c0f71d2e5\transformed\jetified-barcode-scanning-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.mlkit:barcode-scanning:17.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\c055c253c72aaef0e170dd3c0f71d2e5\transformed\jetified-barcode-scanning-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:16.2.1] C:\Users\PMLS\.gradle\caches\transforms-3\78def8edeb7ffab681924257545b624a\transformed\jetified-play-services-mlkit-barcode-scanning-16.2.1\AndroidManifest.xml:6:5-44
@@ -373,6 +372,12 @@ MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\PMLS\.gradle\caches
 MERGED from [com.google.mlkit:vision-common:16.5.0] C:\Users\PMLS\.gradle\caches\transforms-3\b86801a92097a5dcc8fcd3577b45f061\transformed\jetified-vision-common-16.5.0\AndroidManifest.xml:6:5-44
 MERGED from [androidx.exifinterface:exifinterface:1.3.3] C:\Users\PMLS\.gradle\caches\transforms-3\0eba2a16e2a1cb3e4265e0366e9b27e0\transformed\exifinterface-1.3.3\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.3] C:\Users\PMLS\.gradle\caches\transforms-3\0eba2a16e2a1cb3e4265e0366e9b27e0\transformed\exifinterface-1.3.3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\378d88de2fde0e29d92543d12e33b34a\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\378d88de2fde0e29d92543d12e33b34a\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\cde464ada6bf8e4db1ce6a3edaecd38a\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\PMLS\.gradle\caches\transforms-3\cde464ada6bf8e4db1ce6a3edaecd38a\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\d2a0ef851359ae355103c8a357e2e22c\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\PMLS\.gradle\caches\transforms-3\d2a0ef851359ae355103c8a357e2e22c\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.sqlite:sqlite:2.2.0] C:\Users\PMLS\.gradle\caches\transforms-3\dc58477293179deb391b12c4cba55b48\transformed\sqlite-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.sqlite:sqlite:2.2.0] C:\Users\PMLS\.gradle\caches\transforms-3\dc58477293179deb391b12c4cba55b48\transformed\sqlite-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\PMLS\.gradle\caches\transforms-3\30de096d5ba1553f19f74e52c1ed5c94\transformed\jetified-appcompat-resources-1.4.1\AndroidManifest.xml:20:5-22:41
@@ -497,6 +502,22 @@ uses-permission#android.permission.VIBRATE
 ADDED from [:react-native-haptic-feedback] D:\new\UIW-master\node_modules\react-native-haptic-feedback\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-66
 	android:name
 		ADDED from [:react-native-haptic-feedback] D:\new\UIW-master\node_modules\react-native-haptic-feedback\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-63
+provider#com.imagepicker.ImagePickerProvider
+ADDED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-71
+	android:exported
+		ADDED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-63
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-15:70
+	android:resource
+		ADDED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:17-67
+	android:name
+		ADDED from [:react-native-image-picker] D:\new\UIW-master\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:17-67
 uses-permission#android.permission.FLASHLIGHT
 ADDED from [:react-native-torch] D:\new\UIW-master\node_modules\react-native-torch\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-69
 	android:name

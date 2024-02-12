@@ -2,6 +2,12 @@
     "AppSyncApiName": "uiwmaster",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
     "DynamoDBEnableServerSideEncryption": false,
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
     "S3DeploymentBucket": "amplify-uiwmaster-dev-190545-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/82d42a79224cda6cf95023717bae598e4f6483a2"
+    "S3DeploymentRootKey": "amplify-appsync-files/73a181a850116a357b686d0ce4fd4f1e57dad599"
 }

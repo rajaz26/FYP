@@ -57,6 +57,16 @@
             </intent-filter>
         </activity>
 
+        <provider
+            android:name="com.imagepicker.ImagePickerProvider"
+            android:authorities="com.uifyp.imagepickerprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/imagepicker_provider_paths" />
+        </provider>
+
         <uses-library
             android:name="androidx.camera.extensions.impl"
             android:required="false" />

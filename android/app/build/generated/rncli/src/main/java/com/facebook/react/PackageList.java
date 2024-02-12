@@ -29,6 +29,8 @@ import com.swmansion.gesturehandler.RNGestureHandlerPackage;
 import org.linusu.RNGetRandomValuesPackage;
 // react-native-haptic-feedback
 import com.mkuczera.RNReactNativeHapticFeedbackPackage;
+// react-native-image-picker
+import com.imagepicker.ImagePickerPackage;
 // react-native-pager-view
 import com.reactnativepagerview.PagerViewPackage;
 // react-native-reanimated
@@ -103,6 +105,7 @@ public class PackageList {
       new RNGestureHandlerPackage(),
       new RNGetRandomValuesPackage(),
       new RNReactNativeHapticFeedbackPackage(),
+      new ImagePickerPackage(),
       new PagerViewPackage(),
       new ReanimatedPackage(),
       new SafeAreaContextPackage(),

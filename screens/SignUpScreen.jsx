@@ -1,5 +1,5 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image, TextInput } from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, Alert, View, Image, TextInput,Keyboard} from 'react-native';
+import React,{useState} from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionic from 'react-native-vector-icons/Ionicons';
@@ -7,21 +7,23 @@ import { COLORS } from '../assets/theme/index.js';
 import { useNavigation } from '@react-navigation/native';
 import Animated, { FadeIn, FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { signUp } from 'aws-amplify/auth';
-
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 const SignUpScreen = () => {
   const navigation = useNavigation();
-  const { control, handleSubmit, formState: { errors } } = useForm();
-
+  const [loading, setLoading] = useState(null);
+ const { handleSubmit, control, formState: { errors }, reset } = useForm(); 
   const onSubmit = async (data) => {
-
+    setLoading(true);
+    Keyboard.dismiss();
     console.log('data received:', data);
-    if (!data.username || !data.password || !data.confirmPassword || !data.email || !data.storeName) {
+    if (!data.username || !data.password || !data.confirmPassword || !data.email) {
       console.error('Please fill in all the required fields');
+      setLoading(false);
       return;
     }
-
     if (data.password !== data.confirmPassword) {
       console.error('Password and Confirm Password do not match');
+      setLoading(false);
       return;
     }
 
@@ -44,10 +46,18 @@ const SignUpScreen = () => {
       });
       
       console.log('Sign-up success', user);
-      navigation.navigate('ConfirmSignUp', { username: data.username });
+      reset();
+      
+      if (data && data.username) {
+        navigation.navigate('ConfirmSignUp', { username: data.username });
+      } else {
+        console.error('Username not found in data:', data);
+      }
+      setLoading(false);
     } catch (error) {
       console.log('error block');
-      console.error('Sign-up error', error);
+      Alert.alert('Sign Up Error', error.message);
+      setLoading(false);
     }
   };
 
@@ -105,30 +115,20 @@ const SignUpScreen = () => {
             defaultValue=""
           />
           {errors.confirmPassword && <Text style={{ color: 'red' }}>This field is required</Text>}
-
-          <Text style={styles.formText}>Store Name</Text>
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => <TextInput style={styles.formInput} {...field} onChangeText={field.onChange} value={field.value} />}
-            name="storeName"
-            defaultValue=""
-          />
-          {errors.storeName && <Text style={{ color: 'red' }}>This field is required</Text>}
         </View>
         <View style={styles.signupButtonContainer}>
           <TouchableOpacity style={styles.signupButton} onPress={handleSubmit(onSubmit)}>
-            <Text style={styles.signupText}>Sign Up</Text>
+            <Text style={styles.signupText}>{loading ? 'Loading':'Sign Up'}</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.orContainer}>
+        {/* <View style={styles.orContainer}>
           <Text style={styles.orText}>Or</Text>
         </View>
         <View style={styles.logosContainer}>
           <TouchableOpacity style={styles.socialIcons}><Image style={styles.icon} source={require("../assets/icons/google.png")} /></TouchableOpacity>
           <TouchableOpacity style={styles.socialIcons}><Image style={styles.icon} source={require("../assets/icons/apple.png")} /></TouchableOpacity>
           <TouchableOpacity style={styles.socialIcons}><Image style={styles.icon} source={require("../assets/icons/facebook.png")} /></TouchableOpacity>
-        </View>
+        </View> */}
         <View style={styles.noAccountContainer}>
           <Text style={{ color: 'black', fontFamily: 'Poppins-Regular', fontSize: 13 }}>Already have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
@@ -178,7 +178,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontFamily: 'Poppins-Regular',
     fontSize: 13.5,
-
   },
   formInput: {
     height: 45,
@@ -241,6 +240,7 @@ const styles = StyleSheet.create({
     width: 36
   },
   noAccountContainer: {
+    marginTop:20,
     flexDirection: 'row',
     justifyContent: 'center',
 

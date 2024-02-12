@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { createProduct } from '../src/graphql/mutations';
 // import { API, graphqlOperation } from 'aws-amplify/api';
 import { generateClient } from 'aws-amplify/api';
-
+import { getCurrentUser, signInWithRedirect, signOut } from "aws-amplify/auth";
 const HomeScreen2 = () => {
   const client = generateClient();
   // const userRole = useSelector((state) => state.user.role);
@@ -17,44 +17,16 @@ const HomeScreen2 = () => {
   const navigation = useNavigation();
   const openDrawer = () => {
     navigation.openDrawer();
-    console.log(userRole)
   };
-  const createNewProduct = async () => {
-    console.log('we have entered')
-    try {
-      // Product input data
-      const productInput = {
-        name: 'Nido',
-        description: 'Product Description',
-        barcode: '1234567890',
-        images: ['image1.jpg', 'image2.jpg'],
-        price: 19.99,
-      };
- 
-      // Create the product using the mutation
-      const newProduct = await client.graphql({query:createProduct, variables:{ input: {
-        name: 'Nido',
-        description: 'Product Description',
-        barcode: '1234567890',
-        images: ['image1.jpg', 'image2.jpg'],
-        price: 19.99,
-      } ,authMode: 'apiKey'}});
-      console.log('New product created:', newProduct.data.createProduct);
-    } catch (error) {
-      console.error('Error creating product:', error);
-    }
-  };
-  
-  // Usage example
-  const productInput = {
-    name: 'Nido',
-    description: 'Product Description',
-    barcode: '1234567890',
-    images: ['image1.jpg', 'image2.jpg'], // Array of image URLs
-    price: 19.99,
-  };
-  
-  createNewProduct(productInput);
+  // const handleSignOut = async() => {
+  //   console.log('SignOut funtion');
+  //   const authUser = await getCurrentUser({ bypassCache: true });
+  //   console.log(authUser);
+  //   await signOut();
+  //   console.log('SignOut funtion done');
+  //   console.log(authUser);
+  // };
+
   return (
     <View style={{flex:1,backgroundColor:COLORS.primary}}>
         <View style={styles.wrapper}>
@@ -65,7 +37,7 @@ const HomeScreen2 = () => {
                   <View style={styles.sliderWrapper}>
                       <SalesLineChart/>
                   </View>
-                  <TouchableOpacity style={styles.drawerIcon} onPress={createNewProduct}>
+                  <TouchableOpacity style={styles.drawerIcon} onPress={openDrawer}>
                      <Ionic name="menu-outline" size={26} color='white' style={styles.drawerIcon} />
                   </TouchableOpacity>  
             </SafeAreaView>)}
@@ -86,6 +58,7 @@ const HomeScreen2 = () => {
                 
                 <View style={styles.icons}>
                   <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.navigate('Profile')}>
+               
                     <Ionic name="person" size={25} color={COLORS.primary} style={styles.homeIcon} />
                     <Text style={styles.iconText}>Profile</Text>
                   </TouchableOpacity>

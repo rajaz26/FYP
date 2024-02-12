@@ -55,6 +55,12 @@
     "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductQuerygetProductpostAuth0FunctionQuerygetProductpostAuth0FunctionAppSyncFunction74301376FunctionId": {
       "Type": "String"
     },
+    "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+      "Type": "String"
+    },
     "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductMutationcreateProductinit0FunctionMutationcreateProductinit0FunctionAppSyncFunction109BB99AFunctionId": {
       "Type": "String"
     },
@@ -530,7 +536,23 @@
               {
                 "Ref": "UserTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -629,7 +651,23 @@
               {
                 "Ref": "UserTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -728,7 +766,23 @@
               {
                 "Ref": "UserTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -830,7 +884,23 @@
               {
                 "Ref": "UserTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -986,7 +1056,23 @@
               {
                 "Ref": "UserTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1139,7 +1225,23 @@
               {
                 "Ref": "UserTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"deltaSyncTableTtl\", 30))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1176,7 +1278,23 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1213,7 +1331,23 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1250,7 +1384,23 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"us-east-1:8cb9b913-daad-47d3-ba5d-fa5d8326d9e3\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"us-east-1_GSSKqtDlB_Full-access/CognitoIdentityCredentials\",\"us-east-1_GSSKqtDlB_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },

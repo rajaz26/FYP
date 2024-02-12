@@ -12,35 +12,62 @@
       "AmplifyAppId": "d36bto7hmmph46"
     }
   },
+  "api": {
+    "uiwmaster": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "ccbgavwtuvfrxe5kfv2sb4gxuy",
+        "GraphQLAPIEndpointOutput": "https://oqtehrtdqjfunhmu62gssj3oem.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-45nvqp35bfezfby2zgksmnovzi"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2024-02-10T22:38:28.267Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-uiwmaster-dev-190545-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiuiwmaster"
+      },
+      "lastPushDirHash": "Kds0ZLV8SVgl7bzZukzwlja6YtA="
+    }
+  },
   "auth": {
     "uiwmaster1800794d": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
       "customAuth": false,
+      "dependsOn": [],
       "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [],
-        "signupAttributes": [
-          "EMAIL"
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": []
         },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
+        "signupAttributes": [
+          "EMAIL"
         ],
+        "socialProviders": [],
+        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
       },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-uiwmaster-dev-190545-deployment/amplify-cfn-templates/auth/uiwmaster1800794d-cloudformation-template.json",
-        "logicalId": "authuiwmaster1800794d"
-      },
-      "lastPushTimeStamp": "2024-02-09T10:23:44.628Z",
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
       "output": {
         "UserPoolId": "us-east-1_J6QMnuVpV",
         "AppClientIDWeb": "111n9p7hf1cpqbvorrg84hp0kp",
@@ -50,36 +77,11 @@
         "IdentityPoolName": "uiwmaster1800794d_identitypool_1800794d__dev",
         "UserPoolName": "uiwmaster1800794d_userpool_1800794d"
       },
-      "lastPushDirHash": "UUw+az57Q1Mv+icmLtGft0CWQZo="
-    }
-  },
-  "api": {
-    "uiwmaster": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2025-02-08T09:48:02.070Z",
-              "description": ""
-            }
-          },
-          "additionalAuthenticationProviders": []
-        },
-        "GraphQLAPIIdOutput": "ccbgavwtuvfrxe5kfv2sb4gxuy",
-        "GraphQLAPIEndpointOutput": "https://oqtehrtdqjfunhmu62gssj3oem.appsync-api.us-east-1.amazonaws.com/graphql",
-        "GraphQLAPIKeyOutput": "da2-45nvqp35bfezfby2zgksmnovzi"
-      },
+      "lastPushTimeStamp": "2024-02-10T22:38:28.117Z",
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-uiwmaster-dev-190545-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-        "logicalId": "apiuiwmaster"
-      },
-      "lastPushTimeStamp": "2024-02-09T10:23:51.634Z",
-      "lastPushDirHash": "ykdL/Fjwmzyt23r5bciDq8w+5Gc="
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-uiwmaster-dev-190545-deployment/amplify-cfn-templates/auth/uiwmaster1800794d-cloudformation-template.json",
+        "logicalId": "authuiwmaster1800794d"
+      }
     }
   }
 }

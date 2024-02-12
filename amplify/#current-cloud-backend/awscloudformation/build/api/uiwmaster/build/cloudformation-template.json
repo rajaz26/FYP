@@ -8,6 +8,12 @@
       "Type": "String",
       "Default": "AppSyncSimpleTransform"
     },
+    "authRoleName": {
+      "Type": "String"
+    },
+    "unauthRoleName": {
+      "Type": "String"
+    },
     "DynamoDBModelTableReadIOPS": {
       "Type": "Number",
       "Default": 5,
@@ -72,7 +78,12 @@
               }
             ]
           ]
-        }
+        },
+        "AdditionalAuthenticationProviders": [
+          {
+            "AuthenticationType": "AWS_IAM"
+          }
+        ]
       }
     },
     "GraphQLAPITransformerSchema3CB2AE18": {
@@ -111,7 +122,8 @@
             "ApiId"
           ]
         },
-        "Expires": 1739010043
+        "Description": "api key description",
+        "Expires": 1710196585
       }
     },
     "GraphQLAPINONEDS95A13CF0": {
@@ -360,6 +372,12 @@
           },
           "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref": {
             "Ref": "S3DeploymentRootKey"
+          },
+          "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+            "Ref": "authRoleName"
+          },
+          "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+            "Ref": "unauthRoleName"
           }
         }
       },
@@ -436,6 +454,12 @@
               "Product",
               "Outputs.transformerrootstackProductQuerygetProductpostAuth0FunctionQuerygetProductpostAuth0FunctionAppSyncFunction74301376FunctionId"
             ]
+          },
+          "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+            "Ref": "authRoleName"
+          },
+          "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+            "Ref": "unauthRoleName"
           },
           "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductMutationcreateProductinit0FunctionMutationcreateProductinit0FunctionAppSyncFunction109BB99AFunctionId": {
             "Fn::GetAtt": [
@@ -543,6 +567,12 @@
               "Outputs.transformerrootstackProductQuerygetProductpostAuth0FunctionQuerygetProductpostAuth0FunctionAppSyncFunction74301376FunctionId"
             ]
           },
+          "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+            "Ref": "authRoleName"
+          },
+          "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+            "Ref": "unauthRoleName"
+          },
           "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductMutationcreateProductinit0FunctionMutationcreateProductinit0FunctionAppSyncFunction109BB99AFunctionId": {
             "Fn::GetAtt": [
               "Product",
@@ -649,6 +679,12 @@
               "Outputs.transformerrootstackProductQuerygetProductpostAuth0FunctionQuerygetProductpostAuth0FunctionAppSyncFunction74301376FunctionId"
             ]
           },
+          "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+            "Ref": "authRoleName"
+          },
+          "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+            "Ref": "unauthRoleName"
+          },
           "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductMutationcreateProductinit0FunctionMutationcreateProductinit0FunctionAppSyncFunction109BB99AFunctionId": {
             "Fn::GetAtt": [
               "Product",
@@ -754,6 +790,12 @@
               "Product",
               "Outputs.transformerrootstackProductQuerygetProductpostAuth0FunctionQuerygetProductpostAuth0FunctionAppSyncFunction74301376FunctionId"
             ]
+          },
+          "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+            "Ref": "authRoleName"
+          },
+          "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+            "Ref": "unauthRoleName"
           },
           "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductMutationcreateProductinit0FunctionMutationcreateProductinit0FunctionAppSyncFunction109BB99AFunctionId": {
             "Fn::GetAtt": [

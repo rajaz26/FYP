@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Alert,View, Image, TextInput, Keyboard } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../assets/theme/index.js';
-import Animated, { FadeIn, FadeInDown, FadeInUp } from 'react-native-reanimated';
+import Animated, { FadeIn, Easing, FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { signIn } from 'aws-amplify/auth';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 // import config from '../src/aws-exports.js';
 // Amplify.configure(config);
 import {
@@ -17,9 +18,8 @@ import { signOut } from 'aws-amplify/auth';
 
 const LoginScreen = () => {
   const navigation=useNavigation();
-  const { control, handleSubmit, formState: { errors } } = useForm();
+  const { handleSubmit, control, formState: { errors }, reset } = useForm(); 
   const [loading, setLoading] = useState(null);
-
 
 const handleSignOut = async () => {
   console.log('signed out')
@@ -28,10 +28,10 @@ const handleSignOut = async () => {
     console.log('signed out')
   } catch (error) {
     console.log('error signing out: ', error);
-
   }
 }
   const onSubmit = async (data) => {
+    Keyboard.dismiss();
     if(loading){
       return;
     }
@@ -47,22 +47,35 @@ const handleSignOut = async () => {
           username,password
       });
       console.log('Login success', user);
+      reset();
       console.log(data);
-      // Navigate to the next screen after successful login
-      // Replace 'Home' with the name of the screen you want to navigate to
-      // You can also use navigation.navigate('Home', { user }); to pass user data
-      // to the next screen if needed
-      navigation.navigate('Home');
+      navigation.navigate('Home', { screen: 'Dashboard' });
     } catch (error) {
       console.error('Login error has occurred', error);
-      // Handle login errors as needed
+      Alert.alert('Login Error', error.message);
     }
     setLoading(false);
   };
 
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{ flex: 1, marginTop: 10 }}>
+      {loading && (
+      <View style={styles.loadingContainer}>
+      <AnimatedCircularProgress
+  size={120}
+  width={15}
+  fill={100}
+  prefill={0} 
+  duration={1800} 
+  delay={0}
+  easing={Easing.inOut(Easing.ease)} 
+  tintColor={COLORS.secondary}
+  onAnimationComplete={() => console.log('onAnimationComplete')}
+  backgroundColor="#3d5875" />
+    <Text style={styles.loadingText}>Logging In</Text>
+    </View>
+     )}
+      <SafeAreaView style={{ flex: 1, marginTop: 10 , zIndex:-1}}>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
           <TouchableOpacity style={styles.arrowLeftContainer} onPress={() => navigation.goBack()}>
             <Ionic size={24} style={{ right: 5 }} color={COLORS.primary} name="chevron-back-outline" />
@@ -99,7 +112,7 @@ const handleSignOut = async () => {
             <Text style={styles.loginText}>{loading ? 'Loading':'Login'}</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.orContainer}>
+        {/* <View style={styles.orContainer}>
           <Text style={styles.orText}>Or</Text>
         </View>
         <View style={styles.logosContainer}>
@@ -112,7 +125,7 @@ const handleSignOut = async () => {
           <TouchableOpacity style={styles.socialIcons}>
             <Image style={styles.icon} source={require('../assets/icons/facebook.png')} />
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={styles.noAccountContainer}>
           <Text style={{ color: 'black', fontFamily: 'Poppins-Regular', fontSize: 13 }}>
             Don't have an account?
@@ -154,8 +167,23 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1.5,
     backgroundColor: '#044244',
+    zIndex:-1,
+  },
+  loadingContainer: {
+    ...StyleSheet.absoluteFillObject,
+    position:'absolute',
+    zIndex:999999,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText:{
+    color:'white',
+    fontSize:24,
+    fontFamily:'Poppins-Regular',
+    top:15,
   },
   imageContainer: {
     justifyContent: 'flex-start',
@@ -169,15 +197,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFD700',
   },
   imageStyle: {
-    height: 130,
-    width: 130,
+    height: 160,
+    width: 160,
+    top:10,
   },
   formContainer: {
-    flex: 2.5,
+    flex: 1.5,
     backgroundColor: 'white',
     padding: 8,
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
+    zIndex:-1,
   },
   form: {
     paddingTop: 30,
@@ -194,13 +224,13 @@ const styles = StyleSheet.create({
     height: 45,
     backgroundColor: 'rgba(180, 180, 180,0.4)',
     borderRadius: 10,
-    marginBottom: 12,
+    marginBottom: 22,
     paddingLeft: 10,
     bottom: 3,
     color: 'black',
   },
   passwordInput: {
-    marginBottom: 5,
+    marginBottom: 15,
   },
   loginButtonContainer: {
     flex: 0,
@@ -251,5 +281,6 @@ const styles = StyleSheet.create({
   noAccountContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+    marginTop:20,
   },
 });
