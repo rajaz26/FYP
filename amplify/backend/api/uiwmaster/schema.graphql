@@ -1,0 +1,60 @@
+type Product @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  barcode: String!
+  images: [String]
+  manufacturer: String
+  category: String
+  price: Float!
+}
+
+type User @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  username: String!
+  email: String!
+  phonenumber: String!
+  image: String
+  role: UserRole!
+  # Define relationships based on role
+  bills: [Bill] @hasMany(indexName: "byCashier", fields: ["cashierID"])
+  purchaseOrders: [PurchaseOrder] @hasMany(indexName: "byPurchaser", fields: ["purchaserID"])
+}
+
+enum UserRole {
+  GENERAL_MANAGER
+  CASHIER
+  WAREHOUSE_MANAGER
+  PURCHASER
+}
+
+type Bill @model @auth(rules: [{ allow: groups, groups: ["Cashier"] }]) {
+  id: ID!
+  cashier: User! @belongsTo(fields: ["cashierID"])
+  cashierID: ID!
+  items: [Product!]! @hasMany(indexName: "byBill", fields: ["billID"])
+  billID: ID!
+  totalAmount: Float!
+  status: BillStatus!
+}
+
+enum BillStatus {
+  PENDING
+  CONFIRMED
+  PAID
+}
+
+type Inventory @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  product: Product! @belongsTo(fields: ["productID"])
+  productID: ID!
+  warehouseQuantity: Int!
+  shelfQuantity: Int!
+}
+
+type PurchaseOrder @model @auth(rules: [{ allow: groups, groups: ["Purchaser"] }])  {
+  id: ID!
+  purchaser: User! @belongsTo(fields: ["purchaserID"])
+  purchaserID: ID!
+  products: [Product!]! @hasMany(indexName: "byPurchaseOrder", fields: ["purchaseOrderID"])
+  purchaseOrderID: ID!
+}

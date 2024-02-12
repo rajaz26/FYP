@@ -1,0 +1,14 @@
+{
+  "resourceName": "retailappimages",
+  "policyUUID": "37ac7c0b",
+  "bucketName": "retailappimages",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
